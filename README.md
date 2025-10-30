@@ -77,7 +77,8 @@ The application comes with two pre-configured test accounts:
 ├── dashboard.php           # User dashboard
 ├── add_product.php         # Product management (sellers)
 ├── products.php            # Product listing and search
-└── add_to_cart.php         # Shopping cart functionality
+├── add_to_cart.php         # Add items to shopping cart
+└── cart.php                # View and manage shopping cart
 ```
 
 ## Development
