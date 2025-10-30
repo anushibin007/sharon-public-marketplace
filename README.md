@@ -59,6 +59,7 @@ The application comes with two pre-configured test accounts:
 ├── config.php              # Database configuration
 ├── register.php            # User registration
 ├── login.php               # User authentication
+├── logout.php              # User logout
 ├── dashboard.php           # User dashboard
 ├── add_product.php         # Product management (sellers)
 ├── products.php            # Product listing and search
