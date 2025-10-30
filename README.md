@@ -7,6 +7,7 @@ This is a PHP-based online marketplace application that can be easily deployed u
 - User registration and authentication (buyers and sellers)
 - Product management for sellers
 - Shopping cart functionality for buyers
+- Wishlist functionality for buyers
 - Product search and browsing
 
 ## Prerequisites
@@ -78,7 +79,9 @@ The application comes with two pre-configured test accounts:
 ├── add_product.php         # Product management (sellers)
 ├── products.php            # Product listing and search
 ├── add_to_cart.php         # Add items to shopping cart
-└── cart.php                # View and manage shopping cart
+├── cart.php                # View and manage shopping cart
+├── add_to_wishlist.php     # Add items to wishlist
+└── wishlist.php            # View and manage wishlist
 ```
 
 ## Development
