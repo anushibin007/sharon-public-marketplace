@@ -4,11 +4,12 @@ services:
   web:
     build: .
     ports:
-      - "8081:80"
+      - "${WEB_PORT:-8081}:80"
     depends_on:
       - db
     environment:
       - DB_HOST=db
+      - DB_PORT=${DB_PORT:-3306}
       - DB_NAME=online_store
       - DB_USER=root
       - DB_PASS=rootpassword
@@ -21,7 +22,7 @@ services:
       MYSQL_ROOT_PASSWORD: rootpassword
       MYSQL_DATABASE: online_store
     ports:
-      - "3306:3306"
+      - "${DB_PORT:-3306}:3306"
     volumes:
       - mysql_data:/var/lib/mysql
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
