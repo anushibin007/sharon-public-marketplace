@@ -204,7 +204,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <div class="navigation">
         <a href="dashboard.php">← Back to Dashboard</a>
         <a href="products.php">Browse Products</a>
-        <a href="my_products.php">My Products</a>
     </div>
 
     <div class="container">

@@ -170,13 +170,6 @@ if (!isset($_SESSION['user_id'])) {
                     <a href="add_product.php" class="btn btn-seller">Add Product</a>
                 </div>
                 
-                <div class="action-card seller-card">
-                    <div class="icon">📋</div>
-                    <h3>My Products</h3>
-                    <p>View and manage all your listed products. Edit details, update prices, or remove items.</p>
-                    <a href="my_products.php" class="btn btn-seller">Manage Products</a>
-                </div>
-                
                 <div class="action-card">
                     <div class="icon">👥</div>
                     <h3>Browse Marketplace</h3>
