@@ -30,6 +30,12 @@ while ($row = $result->fetch_assoc()) {
     echo "<p>" . htmlspecialchars($row['description']) . "</p>";
     echo "<p>Price: ₹" . $row['price'] . "</p>";
     echo "<p>Seller: " . htmlspecialchars($row['seller_name']) . "</p>";
+    
+    // Display image if available
+    echo "<div style='margin: 10px 0;'>";
+    echo "<img src='image.php?id=" . $row['id'] . "' width='150' height='150' style='object-fit: cover; border: 1px solid #ddd;' alt='Product Image'>";
+    echo "</div>";
+    
     echo "<br><a href='add_to_cart.php?product_id=" . $row['id'] . "'>Add to Cart</a>";
     echo " | <a href='add_to_wishlist.php?product_id=" . $row['id'] . "'>Add to Wishlist</a>";
     echo "</div>";

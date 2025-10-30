@@ -47,7 +47,9 @@ $total_amount = 0;
     <title>My Cart - Online Marketplace</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
-        .cart-item { border: 1px solid #ccc; padding: 15px; margin-bottom: 10px; border-radius: 5px; }
+        .cart-item { border: 1px solid #ccc; padding: 15px; margin-bottom: 10px; border-radius: 5px; display: flex; gap: 15px; }
+        .cart-item-image { flex-shrink: 0; }
+        .cart-item-content { flex-grow: 1; }
         .cart-header { background-color: #f5f5f5; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
         .quantity-input { width: 60px; padding: 5px; }
         .price { font-weight: bold; color: #2c5aa0; }
@@ -84,26 +86,31 @@ $total_amount = 0;
             $total_amount += $item_total;
         ?>
             <div class="cart-item">
-                <h3><?php echo htmlspecialchars($row['name']); ?></h3>
-                <p><?php echo htmlspecialchars($row['description']); ?></p>
-                <p><strong>Seller:</strong> <?php echo htmlspecialchars($row['seller_name']); ?></p>
-                <p class="price">Price: ₹<?php echo number_format($row['price'], 2); ?> each</p>
-                
-                <form method="POST" action="" style="display: inline-block;">
-                    <input type="hidden" name="cart_item_id" value="<?php echo $row['cart_id']; ?>">
-                    <label for="quantity_<?php echo $row['cart_id']; ?>">Quantity:</label>
-                    <input type="number" id="quantity_<?php echo $row['cart_id']; ?>" name="quantity" 
-                           value="<?php echo $row['quantity']; ?>" min="1" class="quantity-input">
-                    <button type="submit" name="action" value="update" class="btn btn-update">Update</button>
-                </form>
-                
-                <form method="POST" action="" style="display: inline-block;">
-                    <input type="hidden" name="cart_item_id" value="<?php echo $row['cart_id']; ?>">
-                    <button type="submit" name="action" value="remove" class="btn btn-remove" 
-                            onclick="return confirm('Are you sure you want to remove this item?')">Remove</button>
-                </form>
-                
-                <p class="price">Subtotal: ₹<?php echo number_format($item_total, 2); ?></p>
+                <div class="cart-item-image">
+                    <img src='image.php?id=<?php echo $row['product_id']; ?>' width='100' height='100' style='object-fit: cover; border: 1px solid #ddd; border-radius: 5px;' alt='Product Image'>
+                </div>
+                <div class="cart-item-content">
+                    <h3><?php echo htmlspecialchars($row['name']); ?></h3>
+                    <p><?php echo htmlspecialchars($row['description']); ?></p>
+                    <p><strong>Seller:</strong> <?php echo htmlspecialchars($row['seller_name']); ?></p>
+                    <p class="price">Price: ₹<?php echo number_format($row['price'], 2); ?> each</p>
+                    
+                    <form method="POST" action="" style="display: inline-block;">
+                        <input type="hidden" name="cart_item_id" value="<?php echo $row['cart_id']; ?>">
+                        <label for="quantity_<?php echo $row['cart_id']; ?>">Quantity:</label>
+                        <input type="number" id="quantity_<?php echo $row['cart_id']; ?>" name="quantity" 
+                               value="<?php echo $row['quantity']; ?>" min="1" class="quantity-input">
+                        <button type="submit" name="action" value="update" class="btn btn-update">Update</button>
+                    </form>
+                    
+                    <form method="POST" action="" style="display: inline-block;">
+                        <input type="hidden" name="cart_item_id" value="<?php echo $row['cart_id']; ?>">
+                        <button type="submit" name="action" value="remove" class="btn btn-remove" 
+                                onclick="return confirm('Are you sure you want to remove this item?')">Remove</button>
+                    </form>
+                    
+                    <p class="price">Subtotal: ₹<?php echo number_format($item_total, 2); ?></p>
+                </div>
             </div>
         <?php endwhile; ?>
 

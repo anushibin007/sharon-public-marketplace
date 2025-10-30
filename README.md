@@ -5,10 +5,11 @@ This is a PHP-based online marketplace application that can be easily deployed u
 ## Features
 
 - User registration and authentication (buyers and sellers)
-- Product management for sellers
+- Product management for sellers with image upload support
 - Shopping cart functionality for buyers
 - Wishlist functionality for buyers
 - Product search and browsing
+- Image storage in MySQL database as BLOB objects
 
 ## Prerequisites
 
@@ -81,7 +82,8 @@ The application comes with two pre-configured test accounts:
 ├── add_to_cart.php         # Add items to shopping cart
 ├── cart.php                # View and manage shopping cart
 ├── add_to_wishlist.php     # Add items to wishlist
-└── wishlist.php            # View and manage wishlist
+├── wishlist.php            # View and manage wishlist
+└── image.php               # Serve product images from database
 ```
 
 ## Development

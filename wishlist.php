@@ -64,7 +64,9 @@ $result = $conn->query($sql);
     <title>My Wishlist - Online Marketplace</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; }
-        .wishlist-item { border: 1px solid #ccc; padding: 15px; margin-bottom: 10px; border-radius: 5px; }
+        .wishlist-item { border: 1px solid #ccc; padding: 15px; margin-bottom: 10px; border-radius: 5px; display: flex; gap: 15px; }
+        .wishlist-item-image { flex-shrink: 0; }
+        .wishlist-item-content { flex-grow: 1; }
         .wishlist-header { background-color: #f5f5f5; padding: 10px; margin-bottom: 20px; border-radius: 5px; }
         .price { font-weight: bold; color: #2c5aa0; }
         .btn { padding: 8px 15px; margin: 5px; border: none; border-radius: 3px; cursor: pointer; text-decoration: none; display: inline-block; }
@@ -101,16 +103,20 @@ $result = $conn->query($sql);
     <?php else: ?>
         <?php while ($row = $result->fetch_assoc()): ?>
             <div class="wishlist-item">
-                <h3><?php echo htmlspecialchars($row['name']); ?></h3>
-                <p><?php echo htmlspecialchars($row['description']); ?></p>
-                <p><strong>Seller:</strong> <?php echo htmlspecialchars($row['seller_name']); ?></p>
-                <p class="price">Price: ₹<?php echo number_format($row['price'], 2); ?></p>
-                
-                <div class="item-meta">
-                    <p>Added to wishlist: <?php echo date('M j, Y g:i A', strtotime($row['added_at'])); ?></p>
+                <div class="wishlist-item-image">
+                    <img src='image.php?id=<?php echo $row['product_id']; ?>' width='100' height='100' style='object-fit: cover; border: 1px solid #ddd; border-radius: 5px;' alt='Product Image'>
                 </div>
-                
-                <div class="actions">
+                <div class="wishlist-item-content">
+                    <h3><?php echo htmlspecialchars($row['name']); ?></h3>
+                    <p><?php echo htmlspecialchars($row['description']); ?></p>
+                    <p><strong>Seller:</strong> <?php echo htmlspecialchars($row['seller_name']); ?></p>
+                    <p class="price">Price: ₹<?php echo number_format($row['price'], 2); ?></p>
+                    
+                    <div class="item-meta">
+                        <p>Added to wishlist: <?php echo date('M j, Y g:i A', strtotime($row['added_at'])); ?></p>
+                    </div>
+                    
+                    <div class="actions">
                     <form method="POST" action="" style="display: inline-block;">
                         <input type="hidden" name="wishlist_item_id" value="<?php echo $row['wishlist_id']; ?>">
                         <button type="submit" name="action" value="add_to_cart" class="btn btn-cart">
@@ -129,6 +135,7 @@ $result = $conn->query($sql);
                     <a href="products.php?search=<?php echo urlencode($row['name']); ?>" class="btn btn-primary">
                         View Similar Products
                     </a>
+                    </div>
                 </div>
             </div>
         <?php endwhile; ?>
